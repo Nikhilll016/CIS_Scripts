@@ -1,6 +1,3 @@
-
-
-
 #!/usr/bin/env bash
 
 # Linux Baseline Security Audit
@@ -12,6 +9,7 @@ set -u
 PASS=0
 WARN=0
 SKIP=0
+
 
 pass() {
     printf '[PASS] %s\n' "$1"
