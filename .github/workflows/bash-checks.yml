@@ -1,0 +1,30 @@
+
+name: Bash Security Script Checks
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  bash-check:
+    name: Validate Bash Scripts
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install ShellCheck
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y shellcheck
+
+      - name: Check Bash syntax
+        run: |
+          bash -n linux_baseline_audit.sh
+
+      - name: Run ShellCheck
+        run: |
+          shellcheck -e SC1091 linux_baseline_audit.sh
